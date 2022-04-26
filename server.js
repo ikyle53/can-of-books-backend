@@ -42,7 +42,8 @@ async function getBooks(req, res, next) {
     }
     console.log(req.query.title);
     let results = await Book.find(queryObject); //{location: 'Seattle'};
-    response.status(200).send(results);
+    console.log(results);
+    res.status(200).send(results);
   } catch(error) {
     next(error);
   }
