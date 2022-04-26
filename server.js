@@ -13,8 +13,10 @@ const { query } = require('express');
 
 //USE
 app.use(cors());
+app.use(express.json());
 
 const req = require('express/lib/request');
+const { response } = require('express');
 
 // add validation to confirm we are wired up to our mongo DB
 const db = mongoose.connection;
@@ -37,25 +39,51 @@ app.get('/book', getBooks);
 async function getBooks(req, res, next) {
   try {
     let queryObject = {};
-    if (req.query.title){
+    if (req.query.title) {
       queryObject.title = req.query.title
     }
     console.log(req.query.title);
     let results = await Book.find(queryObject); //{location: 'Seattle'};
     console.log(results);
     res.status(200).send(results);
-  } catch(error) {
+  } catch (error) {
     next(error);
   }
 }
+
+app.post('/book', postBooks);
+async function postBooks(req, res, next) {
+  console.log(req.body);
+  try {
+    let createdBook = await Book.create(req.body);
+    res.status(200).send(createdBook);
+  } catch (error) {
+    next(error);
+  }
+}
+
+app.delete('/book/:id', deleteBook);
+async function deleteBook(req, res, next) {
+  try {
+    let id = req.params.id;
+    console.log(req.params.id);
+    await Book.findByIdAndDelete(id);
+    res.status(200).send('Book was deleted');
+  } catch (error) {
+    next(error);
+  }
+}
+
 app.use((error, req, res, next) => {
   res.status(500).send(error.message);
 })
 
 //let queryObject = {};
 //if (req.query.hasRead) {
-  //queryObject.hasRead = request.query.hasRead;
+//queryObject.hasRead = request.query.hasRead;
 //}
+
+
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
 
