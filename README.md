@@ -1,27 +1,34 @@
 # Project Name
 
-**Author**: Team Member Names Goes Here
+**Author**: Roger Reyes & Kyle Honaker
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+
+This server has data that is sent in to MongoDB. It is then called and passed to the front end to render to tehe UI.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+
+1. Clone the repository to your lcoal drive
+2. in your terminal change your directory to the repository you cloned
+3. in your terminal type `npm i` to install all dependencies
+4. Once the dependencies are loaded go ahead and open the file in your IDE (optional)
+5. in your terminal type `nodemon` or `npm start` to start the server
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+
+The architecture consists of React.js, MongoDB, Heroku, and Netlify
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+Day 1 (Apr-15): The initial commits were done. We made handshakes between the server, MongoDB, and the front-end happen. The UI populates our book information based off of MongoDB.
 
 ## Estimates
 <!-- See below -->
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+Justin Hamerly (TA) Helping with handshake from front-end to server
+Adam Owada (TA) - Helping with SSL Protocol issue
 
 Lab 11:
 
