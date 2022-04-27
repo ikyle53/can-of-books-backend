@@ -24,7 +24,15 @@ The architecture consists of React.js, MongoDB, Heroku, and Netlify
 Day 1 (Apr-15): The initial commits were done. We made handshakes between the server, MongoDB, and the front-end happen. The UI populates our book information based off of MongoDB.
 
 ## Estimates
-<!-- See below -->
+Lab 12:
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 2:30PM
+
+Finish time: 6:00PM
+
+Actual time needed to complete: 3 hours 30 min
 
 ## Credit and Collaborations
 
