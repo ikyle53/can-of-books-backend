@@ -74,6 +74,17 @@ async function deleteBook(req, res, next) {
   }
 }
 
+app.put('/book/:id', putBook);
+async function putBook(req, res, next) {
+  try {
+    let id = req.params.id;
+    let updatedBook = await Book.findByIdAndUpdate(id, req.body, {new: true, overwrite: true}); 
+    res.status(200).send(updatedBook);
+  } catch (error) {
+    next(error);
+  }
+}
+
 app.use((error, req, res, next) => {
   res.status(500).send(error.message);
 })
