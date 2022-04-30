@@ -55,6 +55,17 @@ Finish time: 3:30PM
 
 Actual time needed to complete: 1 hour 30 min
 
+---
+
+Name of feature: Lab 15
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 3:30
+Finish time: 5:50
+
+Actual time needed to complete: 2 hours 20 min
+
 ## Credit and Collaborations
 
 Justin Hamerly (TA) Helping with handshake from front-end to server
