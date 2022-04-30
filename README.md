@@ -110,3 +110,4 @@ Communicate - Ask for tasks “Where can I help?”
 
 **How will you approach each other and the challenge of building an application knowing that it is impossible for two people to be at the exact same place in understanding and skill level?**
 Communicate issues, communicate often on completion of tasks, open table discussion
+Heroku
