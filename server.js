@@ -17,6 +17,7 @@ app.use(express.json());
 
 const req = require('express/lib/request');
 const { response } = require('express');
+const verifyUser = require('./auth.js');
 
 // add validation to confirm we are wired up to our mongo DB
 const db = mongoose.connection;
@@ -37,18 +38,24 @@ app.get('/', (request, response) => {
 
 app.get('/book', getBooks);
 async function getBooks(req, res, next) {
-  try {
-    let queryObject = {};
-    if (req.query.title) {
-      queryObject.title = req.query.title
+  verifyUser(req, async (err, user) => {
+    if (err) {
+      res.sent('invalid token');
+    } else {
+      try {
+        let queryObject = {};
+        if (req.query.title) {
+          queryObject.title = req.query.title
+        }
+        console.log(req.query.title);
+        let results = await Book.find(queryObject); //{location: 'Seattle'};
+        console.log(results);
+        res.status(200).send(results);
+      } catch (error) {
+        next(error);
+      }
     }
-    console.log(req.query.title);
-    let results = await Book.find(queryObject); //{location: 'Seattle'};
-    console.log(results);
-    res.status(200).send(results);
-  } catch (error) {
-    next(error);
-  }
+  });
 }
 
 app.post('/book', postBooks);
@@ -78,7 +85,7 @@ app.put('/book/:id', putBook);
 async function putBook(req, res, next) {
   try {
     let id = req.params.id;
-    let updatedBook = await Book.findByIdAndUpdate(id, req.body, {new: true, overwrite: true}); 
+    let updatedBook = await Book.findByIdAndUpdate(id, req.body, { new: true, overwrite: true });
     res.status(200).send(updatedBook);
   } catch (error) {
     next(error);
